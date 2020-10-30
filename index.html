@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+// Funcao construtora de objetos
+function Pessoa(firstName, lastName, Age) {
+  let obj = {
+    firstName: firstName,
+    lastName: lastName,
+    Age: Age
+  }
+  return obj;
+}
+
+// Funcao que retorna o mais velho (em idade) registrado
+function maisVelho(arr) {
+  let max = 0;
+  let maisVelhoNome = '';
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].Age > max) {
+      max = arr[i].Age;
+      maisVelhoNome = arr[i].firstName + ' ' + arr[i].lastName;
+    }
+  }
+  return maisVelhoNome;
+}
+
+// Criando a array
+var PessoaArray = [];
+
+// Definindo o key da array pra comecar em zero
+let loop = 0;
+do {
+  // Transformando em variaveis as respostas das perguntas
+  var firstName = prompt('Digite o primeiro nome');
+  var lastName = prompt('Digite o sobrenome');
+  var Age = prompt('Digite a idade');
+  
+  // Gravando os dados em uma array com objetos
+  PessoaArray[loop] = new Pessoa(firstName, lastName, Age);
+  
+  // Incrementando a variavel loop que serve como key para array acima
+  loop++;
+}
+while (confirm('Deseja registrar outra pessoa?')); // Pergunta se quer registrar outra pessoa "OK ou CANCELAR"
+
+// Mostrando no console os resultados das comparacoes
+console.log('Nome completo da PRIMEIRA pessoa registrada: ' + PessoaArray[0].firstName + ' ' + PessoaArray[0].lastName);
+console.log('Nome completo da ULTIMA pessoa registrada: ' + PessoaArray[loop-1].firstName + ' ' + PessoaArray[loop-1].lastName);
+console.log('Nome completo da pessoa MAIS VELHA: ' + maisVelho(PessoaArray));
+</script>
+
+</body>
+</html>
